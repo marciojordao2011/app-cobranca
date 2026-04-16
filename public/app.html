@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cobrança Pro</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div>
+        <h1>Cobrança Pro</h1>
+        <p class="muted">Saldo cumulativo + fechamento automático</p>
+      </div>
+      <div class="topbar-actions">
+        <button id="generateBtn" class="btn btn-secondary">Gerar cobranças</button>
+        <button id="logoutBtn" class="btn btn-danger">Sair</button>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-label">Saldo em aberto</span>
+        <strong id="openBalanceStat">R$ 0,00</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">A receber</span>
+        <strong id="toReceiveStat">R$ 0,00</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Recebido</span>
+        <strong id="receivedStat">R$ 0,00</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Faturas atrasadas</span>
+        <strong id="lateStat">0</strong>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2>Novo cliente</h2>
+        <form id="clientForm" class="stack">
+          <input id="clientName" placeholder="Nome" required>
+          <input id="clientEmail" placeholder="Email">
+          <input id="clientPhone" placeholder="Telefone">
+          <button class="btn btn-primary">Salvar cliente</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Regra de fechamento</h2>
+        <form id="ruleForm" class="stack">
+          <select id="ruleClient"></select>
+          <input id="ruleDescription" placeholder="Descrição da cobrança" required>
+          <input id="ruleDueDay" type="number" min="1" max="28" placeholder="Dia do vencimento" required>
+          <select id="ruleFrequency">
+            <option value="monthly">Mensal</option>
+            <option value="weekly">Semanal</option>
+            <option value="yearly">Anual</option>
+          </select>
+          <button class="btn btn-primary">Salvar regra</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Novo lançamento</h2>
+      <form id="ledgerForm" class="ledger-grid">
+        <select id="ledgerClient"></select>
+        <input id="ledgerDescription" placeholder="Ex.: Compra de peças" required>
+        <input id="ledgerAmount" type="number" step="0.01" placeholder="Valor" required>
+        <input id="ledgerDate" type="date">
+        <button class="btn btn-primary">Adicionar lançamento</button>
+      </form>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2>Saldos abertos</h2>
+        <div id="balanceList"></div>
+      </div>
+
+      <div class="card">
+        <h2>Recorrências</h2>
+        <div id="ruleList"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Faturas</h2>
+      <div id="invoiceList"></div>
+    </div>
+
+    <div class="card">
+      <h2>Lançamentos</h2>
+      <div id="ledgerList"></div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
