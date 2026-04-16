@@ -11,7 +11,7 @@
     <div class="topbar">
       <div>
         <h1>Cobrança Pro</h1>
-        <p class="muted">Saldo cumulativo + fechamento automático</p>
+        <p class="muted">Saldo cumulativo, atraso, cobrança manual e recebimento</p>
       </div>
       <div class="topbar-actions">
         <button id="generateBtn" class="btn btn-secondary">Gerar cobranças</button>
@@ -21,7 +21,7 @@
 
     <div class="stats-grid">
       <div class="stat-card">
-        <span class="stat-label">Saldo em aberto</span>
+        <span class="stat-label">Saldo aberto</span>
         <strong id="openBalanceStat">R$ 0,00</strong>
       </div>
       <div class="stat-card">
@@ -33,8 +33,16 @@
         <strong id="receivedStat">R$ 0,00</strong>
       </div>
       <div class="stat-card">
-        <span class="stat-label">Faturas atrasadas</span>
+        <span class="stat-label">Juros acumulados</span>
+        <strong id="interestStat">R$ 0,00</strong>
+      </div>
+      <div class="stat-card stat-alert">
+        <span class="stat-label">Atrasadas</span>
         <strong id="lateStat">0</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Pagamentos parciais</span>
+        <strong id="partialStat">0</strong>
       </div>
     </div>
 
@@ -60,6 +68,8 @@
             <option value="weekly">Semanal</option>
             <option value="yearly">Anual</option>
           </select>
+          <input id="ruleInterestRate" type="number" step="0.01" min="0" placeholder="Juros diário em %. Ex.: 0.33">
+          <input id="ruleStartDate" type="date">
           <button class="btn btn-primary">Salvar regra</button>
         </form>
       </div>
@@ -74,6 +84,9 @@
         <input id="ledgerDate" type="date">
         <button class="btn btn-primary">Adicionar lançamento</button>
       </form>
+      <div class="muted helper-text">
+        Você pode lançar compras retroativas usando datas antigas.
+      </div>
     </div>
 
     <div class="grid-2">
@@ -89,7 +102,10 @@
     </div>
 
     <div class="card">
-      <h2>Faturas</h2>
+      <div class="section-head">
+        <h2>Faturas</h2>
+        <button id="exportCsvBtn" class="btn btn-secondary btn-small">Exportar CSV</button>
+      </div>
       <div id="invoiceList"></div>
     </div>
 

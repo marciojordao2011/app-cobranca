@@ -1,12 +1,13 @@
 const cron = require("node-cron");
 
-function startScheduler(generateInvoicesUpToToday) {
-  cron.schedule("0 1 * * *", async () => {
+function startScheduler(generateFn) {
+  cron.schedule("0 2 * * *", async () => {
     try {
-      await generateInvoicesUpToToday();
-      console.log("[scheduler] cobranças geradas com sucesso");
+      console.log("Rodando fechamento automático...");
+      await generateFn();
+      console.log("Fechamento concluído.");
     } catch (error) {
-      console.error("[scheduler] erro ao gerar cobranças:", error);
+      console.error("Erro no scheduler:", error);
     }
   });
 }

@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 24px;
 }
@@ -30,13 +30,25 @@ body {
   flex-wrap: wrap;
 }
 
-h1, h2 {
+h1, h2, h4 {
   margin-top: 0;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .muted {
   color: #94a3b8;
   font-size: 14px;
+}
+
+.helper-text {
+  margin-top: 10px;
 }
 
 .card {
@@ -55,7 +67,7 @@ h1, h2 {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 16px;
   margin-bottom: 18px;
 }
@@ -67,9 +79,14 @@ h1, h2 {
   padding: 18px;
 }
 
+.stat-alert {
+  border-color: #7f1d1d;
+  background: #1f1320;
+}
+
 .stat-card strong {
   display: block;
-  font-size: 24px;
+  font-size: 22px;
   margin-top: 8px;
 }
 
@@ -127,17 +144,36 @@ select {
   background: #dc2626;
 }
 
+.btn-warning {
+  background: #d97706;
+}
+
+.btn-whatsapp {
+  background: #16a34a;
+}
+
 .btn-small {
   padding: 8px 10px;
   font-size: 13px;
+}
+
+.invoice-card {
+  border-bottom: 1px solid #1e293b;
+  padding: 10px 0;
+}
+
+.invoice-card-late {
+  background: rgba(127, 29, 29, 0.18);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
 }
 
 .list-item {
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid #1e293b;
+  padding: 10px 0;
   align-items: flex-start;
 }
 
@@ -146,7 +182,15 @@ select {
   flex-direction: column;
   gap: 8px;
   align-items: flex-end;
-  min-width: 180px;
+  min-width: 220px;
+}
+
+.money-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-end;
+  font-size: 14px;
 }
 
 .row-actions {
@@ -199,15 +243,42 @@ select {
   color: #fde68a;
 }
 
+.invoice-details {
+  margin-top: 12px;
+  background: #0b1220;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #1e293b;
+}
+
+.hidden {
+  display: none;
+}
+
 .empty {
   color: #94a3b8;
   padding: 10px 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .grid-2,
   .stats-grid,
-  .ledger-grid {
+  .ledger-grid,
+  .details-grid {
     grid-template-columns: 1fr;
   }
 
@@ -215,7 +286,8 @@ select {
     flex-direction: column;
   }
 
-  .item-right {
+  .item-right,
+  .money-group {
     align-items: flex-start;
   }
 
